@@ -8,7 +8,8 @@
   justify-content: center;
   position: relative;
   margin: 0.2em 0.2em;
-
+  background: #fff;
+  color: #000;
   .card-value {
     position: absolute;
     top: 4px;
@@ -56,7 +57,7 @@
   animation: rotate 0.3s;
 }
 
-@-webkit-keyframes rotate {
+@keyframes rotate {
   from {
     transform: rotateZ(45deg);
   }

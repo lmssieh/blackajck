@@ -8,6 +8,8 @@ const dealerScoreEle = document.querySelector("#dealerScore");
 const playerScoreEle = document.querySelector("#playerScore");
 const startNewGameEle = document.querySelector("#startNewGame");
 
+const currentBetEle = document.querySelector("#currentBet");
+const chipsEle = document.querySelector("#chips");
 class Game {
   constructor() {
     this.deck = this.createDeck(values, suits);
@@ -92,13 +94,18 @@ class Game {
   }
 
   shuffle() {
-    this.shuffledDeck = this.shuffledDeck(this.deck);
+    this.shuffledDeck = this.createShuffledDeck(this.deck);
   }
 
   // gameStart
   startGame() {
     this.reset();
+    // remove the alert
+    if (document.querySelector(".alert"))
+      document.querySelector(".alert").remove();
     startNewGameEle.style.display = "none";
+    // show buttons
+    document.querySelector(".buttons").style.display = "inline-block";
 
     this.dealerHands.push(this.drawHand());
     this.playerHands.push(this.drawHand());
@@ -147,12 +154,16 @@ class Game {
     this.playerHands = [];
     this.currentBet = 0;
 
+    document.querySelector(".buttons").style.display = "none";
     startNewGameEle.style.display = "inline-block";
   }
 
   showAlert(text, color = "red") {
     let template = `<div class="alert alert--${color}">${text}</div>`;
     document.querySelector("#alerts").innerHTML = template;
+    // setTimeout(() => {
+    //   document.querySelector(".alert").remove();
+    // }, 1800);
   }
   // player action
 
@@ -165,13 +176,13 @@ class Game {
       this.dealerScore = this.handTotalValue(this.dealerHands);
     }
     this.updateHtml();
-    // check(player);
+    this.check(player);
   }
 
   stand() {
     if (this.handTotalValue(this.dealerHands) <= 17) {
       this.drawNewCard("dealer");
-      this.stand();
+      console.log("eee");
     } else {
       this.check("dealer");
       console.log("> 17");
@@ -182,7 +193,7 @@ class Game {
     let hand;
     player == "player" ? (hand = this.playerHands) : (hand = this.dealerHands);
     if (this.checkIfBlackjack(hand)) {
-      this.winner(player, `${player} won || blackjack`);
+      this.winner(player, `${player} wins || blackjack`);
     } else if (this.checkIfBust(hand)) {
       this.winner(player, `${player} lost || bust`);
     } else if (player == "dealer") {
@@ -211,7 +222,6 @@ class Game {
   }
 
   winner(player, message) {
-    console.log(message);
     if (message.toLowerCase() != "push") {
       let score = 0;
       player == "player"
@@ -221,6 +231,19 @@ class Game {
     }
     this.showAlert(message);
     this.reset();
+  }
+
+  bet(price) {
+    if (price <= this.chips) {
+      this.currentBet += price;
+      currentBetEle.textContent = this.currentBet;
+      this.chips -= price;
+      chipsEle.textContent = this.chips;
+      console.log(price);
+    } else {
+      this.showAlert(`you don't have enough chips`);
+      console.log(`you don't have enough chips`);
+    }
   }
 }
 

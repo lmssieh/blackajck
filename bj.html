@@ -13,27 +13,35 @@
   <body>
     <div>
       chips : <span id="chips">2500</span>
-    </div>a
+    </div>
     <div>
-      current bet : <span id="currentBet">60</span>
+      current bet : <span id="currentBet">0</span>
     </div>
     <div class="table">
       <div>
-        <div>
+        <div class="card-wrapper">
           <div id="dealerScore">10</div>
           <div id="dealerCards"></div>
         </div>
-        <div>
+        <div class="card-wrapper">
           <div id="playerScore">10</div>
           <div id="playerCards"></div>
         </div>
-          <button onclick="game.drawNewCard('player')">deal</button>
-          <button onclick="game.stand()">stand</button>
-          <button onclick="game.split()">split</button>
+        <div class="buttons">
+          <button onclick="game.drawNewCard('player')" id="deal">deal</button>
+          <button onclick="game.stand()" id="stand">stand</button>
+          <button onclick="game.split()" id="split">split</button>
+        </div>
         </div>
       </div>
+      <div>
+        <div class="chip chip--orange" data-chip-value="100" onclick="game.bet(100)"></div>
+        <div class="chip chip--yellow" data-chip-value="250"  onclick="game.bet(250)"></div>
+        <div class="chip chip--green" data-chip-value="500"  onclick="game.bet(500)"></div>
+        <div class="chip chip--blue" data-chip-value="1000" onclick="game.bet(1000)"></div>
+
+      </div>
     </div>
-    <div class="alert alert--red">YOU WON</div>
     <button id="startNewGame" onclick="game.startGame()">reset</button>
 
     <div id="alerts">
