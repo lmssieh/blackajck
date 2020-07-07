@@ -1,0 +1,82 @@
+.card {
+  border: $black solid 2px;
+  border-radius: 5px;
+  height: 160px;
+  width: 120px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0.2em 0.2em;
+
+  .card-value {
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    font-size: 2em;
+
+    &::before {
+      content: attr(data-card-value);
+    }
+  }
+
+  .card-image {
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div {
+      height: 60px;
+      width: 50px;
+      filter: $black-filter;
+    }
+    .card-image--clubs {
+      background: url("/assets/Card_club.svg") center center/cover no-repeat;
+    }
+    .card-image--hearts {
+      background: url("/assets/Card_heart.svg") center center/cover no-repeat;
+    }
+    .card-image--spades {
+      background: url("/assets/Card_spade.svg") center center/cover no-repeat;
+    }
+    .card-image--diamonds {
+      background: url("/assets/Card_diamond.svg") center center/cover no-repeat;
+    }
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.animate {
+  animation: rotate 0.3s;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    transform: rotateZ(45deg);
+  }
+  to {
+    transform: rotateZ(0deg);
+  }
+}
+
+.is-red {
+  color: $red !important;
+  border-color: $red !important;
+  .card-image {
+    filter: $red-filter;
+  }
+}
+
+.is-black {
+  color: $black !important;
+  border-color: $black !important;
+  .card-image {
+    filter: $black-filter;
+  }
+}

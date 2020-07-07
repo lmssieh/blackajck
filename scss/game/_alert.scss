@@ -1,0 +1,23 @@
+.alert {
+  padding: 1em 2em;
+  margin: 1em auto;
+  color: #fff;
+  width: 600px;
+  text-align: center;
+  background: $black;
+  text-transform: uppercase;
+  animation: rotation 0.2s 3 linear;
+
+  &--red {
+    background: $red;
+  }
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotateX(0deg);
+  }
+  to {
+    -webkit-transform: rotateX(359deg);
+  }
+}

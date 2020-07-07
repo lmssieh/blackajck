@@ -1,0 +1,30 @@
+@import "normalize";
+@import "variables";
+
+body {
+  font-family: "Mukta", sans-serif;
+  font-size: 1.4em;
+  max-height: 100vh;
+  max-width: 100vw;
+}
+
+.table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.is-black {
+  color: $black;
+}
+.is-red {
+  color: $red;
+}
+.filter-red {
+  filter: $red-filter;
+}
+.filter-black {
+  filter: $black-filter;
+}
