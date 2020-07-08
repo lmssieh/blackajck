@@ -34,16 +34,17 @@
       filter: $black-filter;
     }
     .card-image--clubs {
-      background: url("/assets/Card_club.svg") center center/cover no-repeat;
+      background: url("../assets/Card_club.svg") center center/cover no-repeat;
     }
     .card-image--hearts {
-      background: url("/assets/Card_heart.svg") center center/cover no-repeat;
+      background: url("../assets/Card_heart.svg") center center/cover no-repeat;
     }
     .card-image--spades {
-      background: url("/assets/Card_spade.svg") center center/cover no-repeat;
+      background: url("../assets/Card_spade.svg") center center/cover no-repeat;
     }
     .card-image--diamonds {
-      background: url("/assets/Card_diamond.svg") center center/cover no-repeat;
+      background: url("../assets/Card_diamond.svg") center center/cover
+        no-repeat;
     }
   }
 
